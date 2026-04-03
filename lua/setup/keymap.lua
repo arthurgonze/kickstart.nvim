@@ -10,8 +10,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap jk to esc
--- vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<Esc>')
--- vim.keymap.set('t', 'jk', '<C-\\><C-n>')
+vim.keymap.set({ 'n', 'v', 'i' }, '<leader>jk', '<Esc>')
+vim.keymap.set('t', '<leader>jk', '<C-\\><C-n>')
 
 -- Quickly remove search highlight with <leader><space> (now <Space><Space>)
 vim.keymap.set('n', '<space><space>', ':noh<cr>', { desc = 'Remove search highlight' })

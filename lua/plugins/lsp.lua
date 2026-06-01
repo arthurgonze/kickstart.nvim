@@ -22,6 +22,7 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        -- Keep g* LSP motions aligned with Vim conventions, and group other LSP actions under <leader>l*.
         map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
         map('grr', function() require('telescope.builtin').lsp_references() end, '[G]oto [R]eferences')
@@ -32,8 +33,13 @@ return {
         map('gW', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
         map('grt', function() require('telescope.builtin').lsp_type_definitions() end, '[G]oto [T]ype Definition')
         map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-        map('K', vim.lsp.buf.hover, 'Hover Documentation')
-        map('<leader>n', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action', { 'n', 'x' })
+        map('<leader>ld', function()
+          vim.diagnostic.open_float(nil, { scope = 'line' })
+        end, '[L]ine [D]iagnostics')
+        map('<leader>lh', vim.lsp.buf.hover, '[H]over Documentation')
+        map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
+        map('<leader>ls', vim.lsp.buf.signature_help, '[S]ignature Help')
 
         local function client_supports_method(client, method, bufnr)
           if vim.fn.has 'nvim-0.11' == 1 then
@@ -67,11 +73,6 @@ return {
           })
         end
 
-        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          map('<leader>lh', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          end, '[L]SP Toggle Inlay [H]ints')
-        end
       end,
     })
   end,

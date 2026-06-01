@@ -43,9 +43,9 @@ return {
     }
   end,
   keys = {
-    { '<leader>cc', '<cmd>CodeCompanionChat Toggle<cr>', desc = '[C]ode [C]ompanion Chat' },
-    { '<leader>ca', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = '[C]ode [A]ctions' },
-    { '<leader>cd', '<cmd>CodeCompanion /doc<cr>', mode = 'v', desc = '[C]ode [D]ocstring' },
+    { '<leader>ac', '<cmd>CodeCompanionChat Toggle<cr>', desc = '[A]I [C]hat' },
+    { '<leader>aa', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = '[A]I [A]ctions' },
+    { '<leader>ad', '<cmd>CodeCompanion /doc<cr>', mode = 'v', desc = '[A]I [D]ocstring' },
   },
 }
 

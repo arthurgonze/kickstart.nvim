@@ -32,42 +32,77 @@ return {
       function()
         require('dap').continue()
       end,
-      desc = 'Debug: Start/Continue',
+      desc = '[F5] Debug Continue',
     },
     {
       '<F1>',
       function()
         require('dap').step_into()
       end,
-      desc = 'Debug: Step Into',
+      desc = '[F1] Debug Step Into',
     },
     {
       '<F2>',
       function()
         require('dap').step_over()
       end,
-      desc = 'Debug: Step Over',
+      desc = '[F2] Debug Step Over',
     },
     {
       '<F3>',
       function()
         require('dap').step_out()
       end,
-      desc = 'Debug: Step Out',
+      desc = '[F3] Debug Step Out',
     },
     {
       '<leader>b',
       function()
         require('dap').toggle_breakpoint()
       end,
-      desc = 'Debug: Toggle Breakpoint',
+      desc = '[B]reakpoint Toggle',
     },
     {
       '<leader>B',
       function()
         require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
       end,
-      desc = 'Debug: Set Breakpoint',
+      desc = '[B]reakpoint Set Condition',
+    },
+    {
+      '<leader>bc',
+      function()
+        require('dap').run_to_cursor()
+      end,
+      desc = '[D]ebug Run to [C]ursor',
+    },
+    {
+      '<leader>bB',
+      function()
+        require('dap').step_back()
+      end,
+      desc = '[D]ebug Step [B]ack',
+    },
+    {
+      '<leader>br',
+      function()
+        require('dap').restart()
+      end,
+      desc = '[D]ebug [R]estart',
+    },
+    {
+      '<leader>bR',
+      function()
+        require('dap').repl.open()
+      end,
+      desc = '[D]ebug [R]EPL',
+    },
+    {
+      '<leader>bt',
+      function()
+        require('dap').terminate()
+      end,
+      desc = '[D]ebug [T]erminate',
     },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     {
@@ -75,7 +110,7 @@ return {
       function()
         require('dapui').toggle()
       end,
-      desc = 'Debug: See last session result.',
+      desc = '[F7] Debug Toggle UI',
     },
   },
   config = function()

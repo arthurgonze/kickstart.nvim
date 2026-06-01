@@ -85,8 +85,8 @@ return {
       symbol_info()
     end, { desc = 'Show symbol info' })
 
-    vim.keymap.set('n', '<leader>ch', function()
+    vim.keymap.set('n', '<leader>ls', function()
       switch_source_header(bufnr)
-    end, { buffer = bufnr, desc = '[C]langd Switch [H]eader/Source' })
+    end, { buffer = bufnr, desc = '[L]SP [S]witch Header/Source' })
   end,
 }

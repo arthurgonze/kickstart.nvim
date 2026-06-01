@@ -66,8 +66,8 @@ vim.api.nvim_create_user_command('LspToggleInlayHints', function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {})
 
-vim.keymap.set('n', '<leader>ld', '<cmd>LspToggleDiagnostic<CR>', { desc = 'Toggle Lsp Diagnostic Mode' })
-vim.keymap.set('n', '<leader>li', '<cmd>LspToggleInlayHints<CR>', { desc = 'Toggle Lsp Inlay Hints' })
+vim.keymap.set('n', '<leader>ld', '<cmd>LspToggleDiagnostic<CR>', { desc = '[L]SP Toggle [D]iagnostics' })
+vim.keymap.set('n', '<leader>li', '<cmd>LspToggleInlayHints<CR>', { desc = '[L]SP Toggle [I]nlay Hints' })
 
 -- Extras
 local function restart_lsp(client_name)

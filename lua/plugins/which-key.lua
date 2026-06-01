@@ -43,11 +43,11 @@ return {
       { '<leader>b', group = '[B]reakpoint' },
       { '<leader>l', group = '[L]SP' },
       { '<leader>g', group = '[G]it' },
-      { '<leader>c', group = '[C]ode / C++' },
       { '<leader>d', group = '[D]ebug' },
       { '<leader>r', group = '[R]un' },
       { '<leader>u', group = '[U]nreal' },
       { '<leader>a', group = '[A]I' },
+      { '<leader>c', group = '[C]Make' },
     },
   },
 }

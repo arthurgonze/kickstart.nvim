@@ -26,7 +26,15 @@ return {
 
 ### Machine-specific paths
 
-Copy `machine.json.template` to `machine.json` (it is gitignored), then fill in the machine-specific paths for `basedpyright`, `clangd`, and optionally `ue_python`.
+Copy `machine.json.template` to `machine.json` and fill in your machine-specific paths for `basedpyright`, `clangd`, and optionally `ue_python`. The file is gitignored, so your local changes will never be committed to the repository.
+
+## Setting Up Plugins
+
+- Mason installs the configured LSP servers, formatters, linters, and DAP adapters automatically.
+- If you are not using Mason, install the required binaries yourself and keep them on `PATH`.
+- Node.js is required for `typescript-language-server`, `vscode-langservers-extracted`, `prettier`, and `markdownlint-cli`.
+- Python is required for `basedpyright`, `ruff`, and `debugpy`.
+- `basedpyright`, `clangd`, and optionally `ue_python` can be set in `machine.json` when you do not want to rely on `PATH`.
 
 ## Keybinds
 
@@ -87,11 +95,11 @@ Leader key: `<Space>`
 | `gO`         | Document symbols                                       |
 | `gW`         | Workspace symbols                                      |
 | `K`          | Hover documentation                                    |
-| `grn`        | Rename symbol                                          |
-| `<leader>n`  | Rename symbol                                          |
-| `gra`        | Code action (n/x)                                      |
-| `<leader>lh` | Toggle inlay hints (per buffer)                        |
+| `<leader>lr` | Rename symbol                                          |
+| `<leader>lc` | Code action (n/x)                                      |
+| `<leader>ls` | Signature help / Clangd header/source switch           |
 | `<leader>ld` | Toggle diagnostic mode (all lines ↔ current line only) |
+| `<leader>lD` | Line diagnostics float                                 |
 | `<leader>li` | Toggle inlay hints (global)                            |
 | `<leader>q`  | Send diagnostics to quickfix list                      |
 | `<leader>pi` | Organize imports (Python/basedpyright)                 |
@@ -102,6 +110,13 @@ Leader key: `<Space>`
 | ------------ | ------------------------- |
 | `<leader>gs` | Git status (fugitive)     |
 | `<leader>gd` | Git diff split            |
+| `<leader>gv` | Open Diffview             |
+| `<leader>gh` | Diffview file history     |
+| `<leader>gc` | Git commit                |
+| `<leader>gf` | Git fetch                 |
+| `gP`         | Git pull                  |
+| `gB`         | Git branch                |
+| `gS`         | Git stash                 |
 | `<leader>gb` | Git blame (fugitive)      |
 | `<leader>gl` | Git log                   |
 | `<leader>gp` | Git push                  |
@@ -130,6 +145,11 @@ Leader key: `<Space>`
 | `<F7>`      | Toggle DAP UI              |
 | `<leader>b` | Toggle breakpoint          |
 | `<leader>B` | Set conditional breakpoint |
+| `<leader>bt` | Terminate debug session    |
+| `<leader>br` | Restart debug session      |
+| `<leader>bR` | Open REPL                  |
+| `<leader>bc` | Run to cursor              |
+| `<leader>bB` | Step back                  |
 
 ### Build (CMake)
 
@@ -145,9 +165,9 @@ Leader key: `<Space>`
 
 | Key          | Action                      |
 | ------------ | --------------------------- |
-| `<leader>cc` | CodeCompanion Chat toggle   |
-| `<leader>ca` | CodeCompanion Actions (n/v) |
-| `<leader>cd` | Generate docstring (visual) |
+| `<leader>ac` | CodeCompanion Chat toggle   |
+| `<leader>aa` | CodeCompanion Actions (n/v) |
+| `<leader>ad` | Generate docstring (visual) |
 
 ### Toggles & Utilities
 

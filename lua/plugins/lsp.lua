@@ -36,7 +36,7 @@ return {
         map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action', { 'n', 'x' })
         map('<leader>lD', function()
           vim.diagnostic.open_float(nil, { scope = 'line' })
-        end, '[L]ine [D]iagnostics')
+        end, '[L]ine [D]iagnostics Float')
         map('<leader>lh', vim.lsp.buf.hover, '[H]over Documentation')
         map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
         map('<leader>ls', vim.lsp.buf.signature_help, '[S]ignature Help')

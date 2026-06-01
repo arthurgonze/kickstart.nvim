@@ -13,6 +13,7 @@ vim.lsp.inlay_hint.enable(true)
 
 local virtual_text_mode = nil
 local base_virtual_text = {
+  current_line = false, -- explicit reset so deep-merge after toggle correctly clears it
   source = 'if_many',
   spacing = 2,
   format = function(diagnostic)

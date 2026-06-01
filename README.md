@@ -94,10 +94,11 @@ Leader key: `<Space>`
 | `gd`         | Go to definition (native)                              |
 | `gO`         | Document symbols                                       |
 | `gW`         | Workspace symbols                                      |
-| `K`          | Hover documentation                                    |
+| `<leader>lh` | Hover documentation                                    |
 | `<leader>lr` | Rename symbol                                          |
 | `<leader>lc` | Code action (n/x)                                      |
-| `<leader>ls` | Signature help / Clangd header/source switch           |
+| `<leader>ls` | Signature help                                         |
+| `<leader>lH` | Switch header/source (Clangd only)                     |
 | `<leader>ld` | Toggle diagnostic mode (all lines ↔ current line only) |
 | `<leader>lD` | Line diagnostics float                                 |
 | `<leader>li` | Toggle inlay hints (global)                            |

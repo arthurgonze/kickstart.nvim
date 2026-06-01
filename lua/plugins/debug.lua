@@ -56,7 +56,7 @@ return {
       desc = '[F3] Debug Step Out',
     },
     {
-      '<leader>b',
+      '<leader>bb',
       function()
         require('dap').toggle_breakpoint()
       end,
@@ -138,8 +138,12 @@ return {
     -- Configure Python debugger using Mason-installed debugpy
     local function setup_dap_python()
       local ok2, reg = pcall(require, 'mason-registry')
-      if not ok2 then return end
-      if not reg.is_installed('debugpy') then return end
+      if not ok2 then
+        return
+      end
+      if not reg.is_installed 'debugpy' then
+        return
+      end
       local debugpy_path = reg.get_package('debugpy'):get_install_path()
       -- Windows uses Scripts/, Unix uses bin/
       local python_exec = debugpy_path .. '/venv/Scripts/python.exe'
@@ -202,6 +206,5 @@ return {
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
-
   end,
 }

@@ -2,6 +2,7 @@ return {
   'tpope/vim-fugitive',
   cmd = { 'Git', 'G' },
   keys = {
+    { '<leader>ga', '<cmd>Git add .<CR>', desc = '[G]it [A]dd all' },
     { '<leader>gs', '<cmd>Git<CR>', desc = '[G]it [S]tatus' },
     { '<leader>gc', '<cmd>Git commit<CR>', desc = '[G]it [C]ommit' },
     { '<leader>gd', '<cmd>Gdiffsplit<CR>', desc = '[G]it [D]iff' },

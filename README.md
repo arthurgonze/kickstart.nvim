@@ -108,11 +108,12 @@ Leader key: `<Space>`
 
 | Key          | Action                    |
 | ------------ | ------------------------- |
+| `<leader>ga` | Git add all               |
 | `<leader>gs` | Git status (fugitive)     |
+| `<leader>gc` | Git commit                |
 | `<leader>gd` | Git diff split            |
 | `<leader>gv` | Open Diffview             |
 | `<leader>gh` | Diffview file history     |
-| `<leader>gc` | Git commit                |
 | `<leader>gf` | Git fetch                 |
 | `gP`         | Git pull                  |
 | `gB`         | Git branch                |

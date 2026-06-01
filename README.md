@@ -60,6 +60,14 @@ Leader key: `<Space>`
 | `]d` / `[d`   | n    | Next/prev diagnostic                     |
 | `]c` / `[c`   | n    | Next/prev git hunk (in git buffers)      |
 | `]q` / `[q`   | n    | Next/prev quickfix item                  |
+| `<leader>ma`  | n    | Add current file to Harpoon list         |
+| `<leader>mm`  | n    | Toggle Harpoon quick menu                |
+| `<leader>m1`  | n    | Jump to Harpoon file 1                   |
+| `<leader>m2`  | n    | Jump to Harpoon file 2                   |
+| `<leader>m3`  | n    | Jump to Harpoon file 3                   |
+| `<leader>m4`  | n    | Jump to Harpoon file 4                   |
+| `<leader>mp`  | n    | Go to previous Harpoon file              |
+| `<leader>mn`  | n    | Go to next Harpoon file                  |
 | `j` / `k`     | n    | Move by visual lines when no count given |
 | `<C-h/j/k/l>` | i    | Move cursor in insert mode               |
 | `J` / `K`     | v    | Move selected lines down/up              |
@@ -163,6 +171,13 @@ Leader key: `<Space>`
 | `<leader>cmd` | CMake Debug    |
 | `<leader>cms` | CMake Stop     |
 
+### Run
+
+| Key          | Action                                   |
+| ------------ | ---------------------------------------- |
+| `<leader>rp` | Run current Python file                  |
+| `<leader>rf` | Run current file (`.py`, `.lua`, other) |
+
 ### AI
 
 | Key          | Action                      |
@@ -209,22 +224,57 @@ Unreal-Nvim auto-initializes when opening:
 
 If auto-init does not trigger, run `:Unreal` manually.
 
+### Keybinds
+
+| Key          | Action                           |
+| ------------ | -------------------------------- |
+| `<leader>ub` | UE Build Project                 |
+| `<leader>uh` | UE Generate Headers              |
+| `<leader>uc` | UE Compile Commands              |
+| `<leader>ul` | UE Clangd Config                 |
+| `<leader>uB` | UE Build Engine                  |
+| `<leader>uH` | UE Engine Headers                |
+| `<leader>uC` | UE Engine Compile Commands       |
+
 ### C++ Workflow
 
-- Open Neovim from the Unreal project root so `clangd` picks up `compile_commands.json` or `compile_flags.txt`
-- Use `CMakeGenerate` / `CMakeBuild` (`<leader>cmg`, `<leader>cmb`) or UBT directly
-- Debugging uses the `codelldb` adapter via DAP (`<F5>` to start, `<leader>b` for breakpoints)
-- `clangd` provides completion, hover, and go-to-definition for UE C++ headers
-- You can set a machine-specific `clangd` binary path in `machine.json` under the `clangd` key
+**First-time setup (new UE project):**
+1. Open Neovim from the Unreal project root so Unreal-Nvim can initialize against the `.uproject`.
+2. Press `<leader>uc` to generate `compile_commands.json` so `clangd` can resolve UE include paths and headers.
+3. Press `<leader>ul` to write the project `.clangd` config.
+4. Restart the C++ LSP with `:LspRestart clangd` if completion or diagnostics do not refresh immediately.
+5. If you use a custom LLVM install, set the `clangd` path in `machine.json`.
+
+**To build C++ changes:**
+- Press `<leader>ub` to build through Unreal Build Tool with Unreal-Nvim's interactive target/config picker.
+- If you prefer the CMake workflow, use `<leader>cmb` to run `CMakeBuild`.
+
+**To generate headers (after adding `UPROPERTY`/`UFUNCTION` macros):**
+- Press `<leader>uh` to run UHT and refresh generated reflection headers before compiling again.
+
+**To debug C++:**
+1. Set a breakpoint with `<leader>b`.
+2. Press `<F5>` to start or continue the `codelldb` session.
+3. Step into / over / out with `<F1>` / `<F2>` / `<F3>`.
+4. Restart with `<leader>br` if you need a fresh session.
+5. Stop the session with `<leader>bt`.
 
 ### Python (Editor Scripting)
 
-- Open Neovim from the Unreal project root so Python stub detection works correctly
-- `basedpyright` picks up `Intermediate/PythonStub` automatically when Unreal-Nvim is initialized
-- Plugin Python paths (`Plugins/*/Content/Python`) are added to `extraPaths` automatically
-- Set the UE Python interpreter in `machine.json` under the `ue_python` key
-- Use `<leader>pi` to organize imports
-- Python debugging uses `debugpy` via DAP (`<F5>`)
+**First-time setup:**
+1. Set `ue_python` in `machine.json` to the Unreal Engine Python interpreter you want Neovim to use.
+2. Open Neovim from the UE project root so Unreal-Nvim can expose the project Python environment.
+3. `basedpyright` will then pick up `Intermediate/PythonStub` automatically, and plugin Python folders under `Plugins/*/Content/Python` are added to `extraPaths`.
+
+**To run a Python script:**
+- Press `<leader>rp` to run the current `.py` file in a horizontal ToggleTerm split.
+- The output stays visible in the terminal pane; press `<Esc><Esc>` to return to normal mode.
+
+**To debug Python:**
+1. Set a breakpoint with `<leader>b`.
+2. Press `<F5>` to start debugging with `debugpy`.
+3. Step into / over / out with `<F1>` / `<F2>` / `<F3>`.
+4. Stop the session with `<leader>bt`.
 
 ## Troubleshooting
 

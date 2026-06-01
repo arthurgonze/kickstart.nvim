@@ -101,6 +101,7 @@
 | telescope-ui-select.nvim | https://github.com/nvim-telescope/telescope-ui-select.nvim |
 | smart-splits.nvim | https://github.com/mrjones2014/smart-splits.nvim |
 | treesj | https://github.com/Wansmer/treesj |
+| harpoon | https://github.com/ThePrimeagen/harpoon |
 
 ---
 

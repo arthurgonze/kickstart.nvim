@@ -50,7 +50,7 @@ end
 ---@field offsetEncoding? string
 
 return {
-  cmd = { machine.get('clangd', vim.fn.exepath('clangd')) },
+  cmd = { machine.get('clangd', 'clangd') },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
   root_markers = {
     '.clangd',

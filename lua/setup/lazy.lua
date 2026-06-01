@@ -55,6 +55,7 @@ require('lazy').setup({
   { import = 'plugins.telescope-fuzzy-finder' },
   { import = 'plugins.smart-splits' },
   { import = 'plugins.treesj' },
+  { import = 'plugins.harpoon' },
 
   -- Git
   { import = 'plugins.fugitive' },

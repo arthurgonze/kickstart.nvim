@@ -28,9 +28,11 @@ return {
     local Terminal = require('toggleterm.terminal').Terminal
 
     local function get_python_cmd()
+      local ue_python = machine.get('ue_python', '')
+      if ue_python ~= '' then return ue_python end
       local python = vim.fn.exepath 'python'
       if python ~= '' then return python end
-      return machine.get('ue_python', 'python')
+      return 'python'
     end
 
     -- Floating terminal shortcut

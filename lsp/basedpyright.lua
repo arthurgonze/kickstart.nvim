@@ -82,7 +82,7 @@ local function get_extra_paths()
 end
 
 return {
-  cmd = { machine.get('basedpyright', vim.fn.exepath('basedpyright-langserver')), '--stdio' },
+  cmd = { machine.get('basedpyright', 'basedpyright-langserver'), '--stdio' },
   filetypes = { 'python' },
   root_markers = {
     'pyproject.toml',

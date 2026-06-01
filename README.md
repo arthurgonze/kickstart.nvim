@@ -115,9 +115,9 @@ Leader key: `<Space>`
 | `<leader>gv` | Open Diffview             |
 | `<leader>gh` | Diffview file history     |
 | `<leader>gf` | Git fetch                 |
-| `gP`         | Git pull                  |
-| `gB`         | Git branch                |
-| `gS`         | Git stash                 |
+| `<leader>gP` | Git pull                  |
+| `<leader>gB` | Git branch                |
+| `<leader>gS` | Git stash                 |
 | `<leader>gb` | Git blame (fugitive)      |
 | `<leader>gl` | Git log                   |
 | `<leader>gp` | Git push                  |

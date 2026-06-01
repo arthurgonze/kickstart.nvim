@@ -27,9 +27,22 @@ return {
     local machine = require 'machine'
     local Terminal = require('toggleterm.terminal').Terminal
 
+    local function is_ue_project()
+      return vim.fn.glob(vim.fn.getcwd() .. '/*.uproject') ~= ''
+    end
+
     local function get_python_cmd()
-      local ue_python = machine.get('ue_python', '')
-      if ue_python ~= '' then return ue_python end
+      local venv_path = os.getenv 'VIRTUAL_ENV'
+      if venv_path then
+        local venv_python = venv_path .. (vim.fn.has('win32') == 1 and '/Scripts/python.exe' or '/bin/python')
+        if vim.fn.filereadable(venv_python) == 1 then return venv_python end
+      end
+
+      if is_ue_project() then
+        local ue_python = machine.get('ue_python', '')
+        if ue_python ~= '' then return ue_python end
+      end
+
       local python = vim.fn.exepath 'python'
       if python ~= '' then return python end
       return 'python'

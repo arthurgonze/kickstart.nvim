@@ -18,6 +18,7 @@ local base_virtual_text = {
   format = function(diagnostic)
     return diagnostic.message
   end,
+  current_line = false,
 }
 local diagnostic_underline = { severity = vim.diagnostic.severity.ERROR }
 

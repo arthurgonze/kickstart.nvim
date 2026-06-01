@@ -34,7 +34,7 @@ return {
         map('grt', function() require('telescope.builtin').lsp_type_definitions() end, '[G]oto [T]ype Definition')
         map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         map('<leader>lc', vim.lsp.buf.code_action, '[C]ode Action', { 'n', 'x' })
-        map('<leader>ld', function()
+        map('<leader>lD', function()
           vim.diagnostic.open_float(nil, { scope = 'line' })
         end, '[L]ine [D]iagnostics')
         map('<leader>lh', vim.lsp.buf.hover, '[H]over Documentation')

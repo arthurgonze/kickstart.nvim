@@ -5,6 +5,13 @@ return {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
   },
+  config = function(_, opts)
+    require('notify').setup {
+      background_colour = '#000000',
+    }
+
+    require('noice').setup(opts)
+  end,
   opts = {
     lsp = {
       override = {
@@ -15,10 +22,13 @@ return {
       signature = {
         enabled = false,
       },
+      progress = {
+        enabled = false,
+      },
     },
     presets = {
-      -- bottom_search = true, -- classic search bar at bottom
-      -- command_palette = true, -- command line + popupmenu together
+      -- bottom_search = true,
+      -- command_palette = true,
       long_message_to_split = true,
       lsp_doc_border = true,
     },
@@ -26,6 +36,15 @@ return {
       -- suppress annoying "written" message on save
       {
         filter = { event = 'msg_show', kind = '', find = 'written' },
+        opts = { skip = true },
+      },
+
+      -- suppress generic Neovim/plugin deprecation noise
+      {
+        filter = {
+          event = 'msg_show',
+          find = 'deprecated',
+        },
         opts = { skip = true },
       },
     },

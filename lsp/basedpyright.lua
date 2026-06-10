@@ -1,4 +1,4 @@
-local machine = require('machine')
+local machine = require 'machine'
 
 local function set_python_path(path)
   local clients = vim.lsp.get_clients {
@@ -29,15 +29,19 @@ local function get_python_path()
   end
   if is_ue_project() then
     local ue_python = machine.get('ue_python', nil)
-    if ue_python then return ue_python end
+    if ue_python then
+      return ue_python
+    end
   end
-  local python_on_path = vim.fn.exepath('python')
+  local python_on_path = vim.fn.exepath 'python'
   return python_on_path ~= '' and python_on_path or 'python'
 end
 
 local function get_current_ue_python_stub()
   local ok, unreal_nvim = pcall(require, 'unreal-nvim')
-  if not ok then return '' end
+  if not ok then
+    return ''
+  end
   local ue_project = unreal_nvim.find_uproject()
   if ue_project then
     local ue_folder = ue_project:match '^(.*[\\/])'
@@ -48,17 +52,23 @@ end
 
 local function get_ue_python_plugins()
   local ok, unreal_nvim = pcall(require, 'unreal-nvim')
-  if not ok then return {} end
+  if not ok then
+    return {}
+  end
   local folders = {}
   local ue_project = unreal_nvim.find_uproject()
   if ue_project then
     local ue_folder = ue_project:match '^(.*[\\/])'
     local ue_plugins = ue_folder .. 'Plugins\\'
     local handle = vim.uv.fs_scandir(ue_plugins)
-    if not handle then return folders end
+    if not handle then
+      return folders
+    end
     while true do
       local name, t = vim.uv.fs_scandir_next(handle)
-      if not name then break end
+      if not name then
+        break
+      end
       if t == 'directory' then
         local plugin_folder = ue_plugins .. name .. '\\Content\\Python'
         local stat = vim.uv.fs_stat(plugin_folder)
@@ -117,6 +127,11 @@ return {
     })
   end,
   on_attach = function(client, bufnr)
+    client.settings = client.config.settings
+    client.notify('workspace/didChangeConfiguration', {
+      settings = client.settings,
+    })
+
     vim.api.nvim_buf_create_user_command(bufnr, 'LspPyrightOrganizeImports', function()
       client:exec_cmd {
         command = 'basedpyright.organizeimports',

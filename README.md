@@ -146,15 +146,15 @@ Leader key: `<Space>`
 
 ### Debug (DAP)
 
-| Key         | Action                     |
-| ----------- | -------------------------- |
-| `<F5>`      | Start / Continue           |
-| `<F1>`      | Step into                  |
-| `<F2>`      | Step over                  |
-| `<F3>`      | Step out                   |
-| `<F7>`      | Toggle DAP UI              |
-| `<leader>b` | Toggle breakpoint          |
-| `<leader>B` | Set conditional breakpoint |
+| Key          | Action                     |
+| ------------ | -------------------------- |
+| `<F5>`       | Start / Continue           |
+| `<F1>`       | Step into                  |
+| `<F2>`       | Step over                  |
+| `<F3>`       | Step out                   |
+| `<F7>`       | Toggle DAP UI              |
+| `<leader>b`  | Toggle breakpoint          |
+| `<leader>B`  | Set conditional breakpoint |
 | `<leader>bt` | Terminate debug session    |
 | `<leader>br` | Restart debug session      |
 | `<leader>bR` | Open REPL                  |
@@ -173,9 +173,9 @@ Leader key: `<Space>`
 
 ### Run
 
-| Key          | Action                                   |
-| ------------ | ---------------------------------------- |
-| `<leader>rp` | Run current Python file                  |
+| Key          | Action                                  |
+| ------------ | --------------------------------------- |
+| `<leader>rp` | Run current Python file                 |
 | `<leader>rf` | Run current file (`.py`, `.lua`, other) |
 
 ### AI
@@ -226,19 +226,20 @@ If auto-init does not trigger, run `:Unreal` manually.
 
 ### Keybinds
 
-| Key          | Action                           |
-| ------------ | -------------------------------- |
-| `<leader>ub` | UE Build Project                 |
-| `<leader>uh` | UE Generate Headers              |
-| `<leader>uc` | UE Compile Commands              |
-| `<leader>ul` | UE Clangd Config                 |
-| `<leader>uB` | UE Build Engine                  |
-| `<leader>uH` | UE Engine Headers                |
-| `<leader>uC` | UE Engine Compile Commands       |
+| Key          | Action                     |
+| ------------ | -------------------------- |
+| `<leader>ub` | UE Build Project           |
+| `<leader>uh` | UE Generate Headers        |
+| `<leader>uc` | UE Compile Commands        |
+| `<leader>ul` | UE Clangd Config           |
+| `<leader>uB` | UE Build Engine            |
+| `<leader>uH` | UE Engine Headers          |
+| `<leader>uC` | UE Engine Compile Commands |
 
 ### C++ Workflow
 
 **First-time setup (new UE project):**
+
 1. Open Neovim from the Unreal project root so Unreal-Nvim can initialize against the `.uproject`.
 2. Press `<leader>uc` to generate `compile_commands.json` so `clangd` can resolve UE include paths and headers.
 3. Press `<leader>ul` to write the project `.clangd` config.
@@ -246,13 +247,16 @@ If auto-init does not trigger, run `:Unreal` manually.
 5. If you use a custom LLVM install, set the `clangd` path in `machine.json`.
 
 **To build C++ changes:**
+
 - Press `<leader>ub` to build through Unreal Build Tool with Unreal-Nvim's interactive target/config picker.
 - If you prefer the CMake workflow, use `<leader>cmb` to run `CMakeBuild`.
 
 **To generate headers (after adding `UPROPERTY`/`UFUNCTION` macros):**
+
 - Press `<leader>uh` to run UHT and refresh generated reflection headers before compiling again.
 
 **To debug C++:**
+
 1. Set a breakpoint with `<leader>b`.
 2. Press `<F5>` to start or continue the `codelldb` session.
 3. Step into / over / out with `<F1>` / `<F2>` / `<F3>`.
@@ -262,15 +266,18 @@ If auto-init does not trigger, run `:Unreal` manually.
 ### Python (Editor Scripting)
 
 **First-time setup:**
+
 1. Set `ue_python` in `machine.json` to the Unreal Engine Python interpreter you want Neovim to use.
 2. Open Neovim from the UE project root so Unreal-Nvim can expose the project Python environment.
 3. `basedpyright` will then pick up `Intermediate/PythonStub` automatically, and plugin Python folders under `Plugins/*/Content/Python` are added to `extraPaths`.
 
 **To run a Python script:**
+
 - Press `<leader>rp` to run the current `.py` file in a horizontal ToggleTerm split.
 - The output stays visible in the terminal pane; press `<Esc><Esc>` to return to normal mode.
 
 **To debug Python:**
+
 1. Set a breakpoint with `<leader>b`.
 2. Press `<F5>` to start debugging with `debugpy`.
 3. Step into / over / out with `<F1>` / `<F2>` / `<F3>`.
